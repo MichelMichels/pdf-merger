@@ -1,0 +1,52 @@
+﻿<Window
+    x:Class="MichelMichels.Pdf.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MichelMichels.Pdf"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="PDF merger by Michel Michels"
+    d:DataContext="{d:DesignInstance local:MainViewModel}"
+    SizeToContent="WidthAndHeight"
+    mc:Ignorable="d">
+    <Grid>
+        <Border Padding="16">
+            <StackPanel>
+                <TextBlock Margin="0,0,0,4" Text="Current input directory" />
+                <TextBox
+                    Margin="0,0,0,16"
+                    IsEnabled="False"
+                    Text="{Binding CurrentDirectoryPath}" />
+
+                <TextBlock Margin="0,0,0,4" Text="Output file path" />
+
+                <Grid Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox
+                        Grid.Column="0"
+                        Width="500"
+                        Text="{Binding OutputFilePath}" />
+
+                    <Button
+                        Grid.Column="2"
+                        Padding="8,0"
+                        Click="OpenSaveFileDialog_Click"
+                        Content="..." />
+                </Grid>
+
+                <Button
+                    Padding="16,8"
+                    HorizontalAlignment="Center"
+                    Command="{Binding MergeAllCommand}"
+                    Content="MERGE" />
+            </StackPanel>
+
+
+        </Border>
+    </Grid>
+</Window>
